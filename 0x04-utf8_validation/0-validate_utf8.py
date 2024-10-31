@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""""Determine is a data represents a valid UTF-8 encoding"""
+""""Determine if a data set represents a valid UTF-8 encoding"""
 
 
 def validUTF8(data):
@@ -14,8 +14,8 @@ def validUTF8(data):
     """
     num_bytes = 0
 
-    mask1 = 1 << 7  # 10000000
-    mask2 = 1 << 6  # 01000000
+    mask1 = 1 << 7  
+    mask2 = 1 << 6  
 
     for num in data:
         byte = num & 0xFF
@@ -24,11 +24,11 @@ def validUTF8(data):
             if (byte & mask1) == 0:
                 continue
             elif (byte & (mask1 >> 1)) == mask1:
-                num_bytes = 1  # 2-byte character (110xxxxx)
+                num_bytes = 1
             elif (byte & (mask1 >> 2)) == (mask1 >> 1):
-                num_bytes = 2  # 3-byte character (1110xxxx)
+                num_bytes = 2
             elif (byte & (mask1 >> 3)) == (mask1 >> 2):
-                num_bytes = 3  # 4-byte character (11110xxx)
+                num_bytes = 3
             else:
                 return False
         else:
