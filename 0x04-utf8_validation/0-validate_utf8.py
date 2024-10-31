@@ -14,7 +14,7 @@ def validUTF8(data):
     """
     number_of_bytes = 0
     mask1 = 1 << 7
-    mask2 = 1 << 6  
+    mask2 = 1 << 6
     for num in data:
         byte = num & 0xFF
         if number_of_bytes == 0:
